@@ -30,7 +30,7 @@ router.post('/login', loginMiddleware);
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 router.get('/google/callback', passport.authenticate('google', { session: false }), (req, res) => {
     const { user, token } = req.user;
-    res.redirect(`${process.env.CLIENT_URL}/auth/success?token=${token}`);
+    res.redirect(`${process.env.CLIENT_URL}/auth/callback?token=${token}`);
 });
 router.get('/profile', authenticateJWT, (req, res) => {
     // You can replace the hardcoded profile with actual data from your database
